@@ -6,7 +6,7 @@ public class JavaApplication1 {
 
   
     public static void main(String[] args) {
-        System.out.println("Primer programa de java 2");
+        System.out.println("Deme mi punto");
     }
     
 }
