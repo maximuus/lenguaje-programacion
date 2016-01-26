@@ -17,6 +17,8 @@ public class JavaApplication1 {
        ventana.setSize(350, 350);
        ventana.setVisible(true);
        
+       
+       
         
         
         
