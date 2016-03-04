@@ -26,7 +26,7 @@ public class ProbarMiExcepcion {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }finally{
-            System.err.println("Este se ejecuta se lance o no la e");
+            System.out.println("Este se ejecuta se lance o no la e");
         }
         
         
