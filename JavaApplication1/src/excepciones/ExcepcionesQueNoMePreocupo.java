@@ -16,7 +16,7 @@ public class ExcepcionesQueNoMePreocupo {
     int a=2;
             int b=0;
                     System.out.println("Antes de la excepcion");
-                    int z=a/b;
+                    int z=b/a;
                         System.out.println("El valor de la division es:"+z);
                         
                         

@@ -32,11 +32,8 @@ public class ProbarMisThreads implements Runnable{
         
         //3. Cuandos se corra el programa estara en estado de ejecucion
        //active su metodo run
-        
         //5.Cuando acomplete su tarea del codifo run
-        
-       
-    }
+        }
 
     @Override
     public void run() {
