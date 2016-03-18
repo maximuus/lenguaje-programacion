@@ -6,26 +6,24 @@
 package Capitulo11.Collections;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 /**
  *
  * @author T-101
  */
 public class TestBasico extends javax.swing.JFrame {
-
+    ArrayList<Pregunta> preguntas;
+JRadioButton radios[]=new JRadioButton[4];
+int numero;
     /**
      * Creates new form TestBasico
      */
     public TestBasico() {
+         preguntas=GeneradorPreguntas.obtenerTodasLasPreguntas();
         initComponents();
-        ArrayList<Pregunta>preguntas=
-                GeneradorPreguntas.obtenerTodasLasPreguntas();
-        Pregunta.setText(preguntas.get(0).getTitulo());
-        Radio0.setText(preguntas.get(0).getOpciones().get(0).getTitulo());
-        Radio1.setText(preguntas.get(0).getOpciones().get(1).getTitulo());
-        Radio2.setText(preguntas.get(0).getOpciones().get(2).getTitulo());
-        Radio3.setText(preguntas.get(0).getOpciones().get(3).getTitulo());
-       
+        inicarTodos();
     }
 
     /**
@@ -70,6 +68,11 @@ public class TestBasico extends javax.swing.JFrame {
         });
 
         jButton2.setText("Ir a siguiente pregunta");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,7 +120,17 @@ public class TestBasico extends javax.swing.JFrame {
 
     private void RActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RActionPerformed
         // TODO add your handling code here:
+  boolean respuesta=
+          GeneradorPreguntas.checarRespuesta(preguntas.get(numero),radios);
+        JOptionPane.showMessageDialog(rootPane, "Respuesta:"+respuesta);
+        
     }//GEN-LAST:event_RActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        numero++;
+        inicarTodos();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,4 +177,31 @@ public class TestBasico extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
+
+    private void inicarTodos() {
+        if(numero<preguntas.size()){
+        radios[0]=Radio0;
+        radios[1]=Radio1;
+        radios[2]=Radio2;
+        radios[3]=Radio3;
+        
+ 
+        Pregunta.setText(preguntas.get(numero).getTitulo());
+        Radio0.setText(preguntas.get(numero).getOpciones().get(0).getTitulo());
+        Radio1.setText(preguntas.get(numero).getOpciones().get(1).getTitulo());
+        Radio2.setText(preguntas.get(numero).getOpciones().get(2).getTitulo());
+        Radio3.setText(preguntas.get(numero).getOpciones().get(3).getTitulo());
+        
+        ArrayList<Pregunta>preguntas=GeneradorPreguntas.obtenerTodasLasPreguntas();
+      
+        
+        Radio0.setText(preguntas.get(numero).getOpciones().get(0).getTitulo());
+        Radio1.setText(preguntas.get(numero).getOpciones().get(1).getTitulo());
+        Radio2.setText(preguntas.get(numero).getOpciones().get(2).getTitulo());
+        Radio3.setText(preguntas.get(numero).getOpciones().get(3).getTitulo());
+          
+    }
+    }
+
+
 }
