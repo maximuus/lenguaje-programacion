@@ -23,6 +23,11 @@ public class GeneradorPreguntas {
         Opcion o3op2=new Opcion("Seul",false);
         Opcion o4op2=new Opcion("Pyonjiang",false);
         
+        Opcion o1op3=new Opcion("Italia",false);
+        Opcion o2op3=new Opcion("Roma",false);
+        Opcion o3op3=new Opcion("Madrid",true);
+        Opcion o4op3=new Opcion("Barcelona",false);
+        
         
         ArrayList<Opcion>opciones=new ArrayList<Opcion>();
         opciones.add(op1);
@@ -36,11 +41,20 @@ public class GeneradorPreguntas {
         opcionesp2.add(o3op2);
         opcionesp2.add(o4op2);
         
+        ArrayList<Opcion>opcionesp3=new ArrayList<Opcion>();
+        opcionesp3.add(o1op3);
+        opcionesp3.add(o2op3);
+        opcionesp3.add(o3op3);
+        opcionesp3.add(o4op3);
+        
+        
         Pregunta p1=new Pregunta("Capital de Rusia", opciones);
-        Pregunta p2=new Pregunta("Capital de China", opciones);
+        Pregunta p2=new Pregunta("Capital de China", opcionesp2);
+        Pregunta p3=new Pregunta("Capital de España",opcionesp3);
         ArrayList<Pregunta> preguntas=new ArrayList<Pregunta>();
         preguntas.add(p1);
         preguntas.add(p2);
+        preguntas.add(p3);
         return preguntas;
     }
     public static boolean checarRespuesta(Pregunta p, JRadioButton[]radios){
