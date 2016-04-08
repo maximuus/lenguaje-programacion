@@ -6,6 +6,9 @@
 package Capitulo11.Collections;
 
 import java.util.ArrayList;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
@@ -16,14 +19,37 @@ import javax.swing.JRadioButton;
 public class TestBasico extends javax.swing.JFrame {
     ArrayList<Pregunta> preguntas;
 JRadioButton radios[]=new JRadioButton[4];
-int numero;
+int numero=0;
+int x=60;
     /**
      * Creates new form TestBasico
      */
     public TestBasico() {
          preguntas=GeneradorPreguntas.obtenerTodasLasPreguntas();
         initComponents();
+        Thread t1=new Thread(new Runnable() {
+
+             @Override
+             public void run() {
+                 while(true){
+                     x--;
+                     if(x<=0)dispose();
+                     etiquetaReloj2.setText(""+x);
+                     try{
+                         Thread.sleep(1000);
+                     }catch(InterruptedException e){
+                         Logger.getLogger(TestBasico.class.getName()).log(Level.SEVERE,null,e);
+                         
+                     }
+                     
+                 }
+                  
+             }
+         });
+        t1.start();
         inicarTodos();
+
+    
     }
 
     /**
@@ -36,6 +62,7 @@ int numero;
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        etiquetaReloj = new javax.swing.JLabel();
         Pregunta = new javax.swing.JLabel();
         Radio0 = new javax.swing.JRadioButton();
         Radio1 = new javax.swing.JRadioButton();
@@ -43,6 +70,7 @@ int numero;
         Radio3 = new javax.swing.JRadioButton();
         R = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        etiquetaReloj2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,15 +119,26 @@ int numero;
                     .addComponent(Radio2)
                     .addComponent(R)
                     .addComponent(Radio3))
-                .addGap(9, 9, 9)
-                .addComponent(jButton2)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jButton2)
+                        .addContainerGap(131, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(etiquetaReloj2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(Pregunta)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(Pregunta))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(etiquetaReloj2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(38, 38, 38)
                 .addComponent(Radio0)
                 .addGap(18, 18, 18)
@@ -175,6 +214,8 @@ int numero;
     private javax.swing.JRadioButton Radio2;
     private javax.swing.JRadioButton Radio3;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel etiquetaReloj;
+    private javax.swing.JLabel etiquetaReloj2;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 
