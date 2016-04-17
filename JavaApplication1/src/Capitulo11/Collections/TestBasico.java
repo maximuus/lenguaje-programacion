@@ -23,22 +23,28 @@ public class TestBasico extends javax.swing.JFrame {
 JRadioButton radios[]=new JRadioButton[4];
 int numero=0;
 
-int x=30;
+int x=10;
     /**
      * Creates new form TestBasico
      */
     public TestBasico() {
+         initComponents();
          preguntas=GeneradorPreguntas.obtenerTodasLasPreguntas();
-        initComponents();
-        botonEvaluacion.setVisible(false);
+         Pregunta.setText(preguntas.get(numero).getTitulo());
+        //initComponents();
+       botonEvaluacion.setVisible(false);
         Thread t1=new Thread(new Runnable() {
 
              @Override
              public void run() {
                  while(true){
+                     
                      inicarTodos();
                      x--;
-                     if(x<=0);
+                     if(x<=0){
+                         numero++;
+                         x=20;
+                     }
                     
                     
                     etiquetaReloj2.setText(""+x);
@@ -48,7 +54,7 @@ int x=30;
                          if(x<=5){
                              etiquetaReloj2.setForeground(Color.red);
                          }
-                else{
+               else{
                              
                          }
                      }catch(InterruptedException e){
