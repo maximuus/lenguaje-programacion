@@ -5,6 +5,7 @@
  */
 package Capitulo11.Collections;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.*;
 import java.util.logging.Level;
@@ -18,25 +19,38 @@ import javax.swing.JRadioButton;
  */
 public class TestBasico extends javax.swing.JFrame {
     ArrayList<Pregunta> preguntas;
+    float aciertos;
 JRadioButton radios[]=new JRadioButton[4];
 int numero=0;
-int x=60;
+
+int x=30;
     /**
      * Creates new form TestBasico
      */
     public TestBasico() {
          preguntas=GeneradorPreguntas.obtenerTodasLasPreguntas();
         initComponents();
+        botonEvaluacion.setVisible(false);
         Thread t1=new Thread(new Runnable() {
 
              @Override
              public void run() {
                  while(true){
+                     inicarTodos();
                      x--;
-                     if(x<=0)dispose();
-                     etiquetaReloj2.setText(""+x);
+                     if(x<=0);
+                    
+                    
+                    etiquetaReloj2.setText(""+x);
                      try{
+                         
                          Thread.sleep(1000);
+                         if(x<=5){
+                             etiquetaReloj2.setForeground(Color.red);
+                         }
+                else{
+                             
+                         }
                      }catch(InterruptedException e){
                          Logger.getLogger(TestBasico.class.getName()).log(Level.SEVERE,null,e);
                          
@@ -44,10 +58,10 @@ int x=60;
                      
                  }
                   
-             }
+             } 
          });
         t1.start();
-        inicarTodos();
+        
 
     
     }
@@ -71,6 +85,7 @@ int x=60;
         R = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         etiquetaReloj2 = new javax.swing.JLabel();
+        botonEvaluacion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,32 +117,44 @@ int x=60;
             }
         });
 
+        botonEvaluacion.setText("Evaluacion");
+        botonEvaluacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEvaluacionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Radio1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(Pregunta))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addComponent(Radio0)))
-                    .addComponent(Radio2)
-                    .addComponent(R)
-                    .addComponent(Radio3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jButton2)
-                        .addContainerGap(131, Short.MAX_VALUE))
+                        .addGap(52, 52, 52)
+                        .addComponent(Pregunta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(R)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonEvaluacion)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
                         .addComponent(etiquetaReloj2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(19, 19, 19))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Radio3)
+                    .addComponent(Radio2)
+                    .addComponent(Radio1)
+                    .addComponent(Radio0))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +177,8 @@ int x=60;
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(R, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(botonEvaluacion))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -168,8 +196,18 @@ int x=60;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         numero++;
-        inicarTodos();
+         if(numero==10){
+          botonEvaluacion.setVisible(true);
+       
     }//GEN-LAST:event_jButton2ActionPerformed
+     inicarTodos();
+    }
+    
+    private void botonEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEvaluacionActionPerformed
+        // TODO add your handling code here:
+        
+        JOptionPane.showMessageDialog(rootPane, "Tu resultado: "+GeneradorPreguntas.aciertos);
+    }//GEN-LAST:event_botonEvaluacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,6 +251,7 @@ int x=60;
     private javax.swing.JRadioButton Radio1;
     private javax.swing.JRadioButton Radio2;
     private javax.swing.JRadioButton Radio3;
+    private javax.swing.JButton botonEvaluacion;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel etiquetaReloj;
     private javax.swing.JLabel etiquetaReloj2;
@@ -225,6 +264,7 @@ int x=60;
         radios[1]=Radio1;
         radios[2]=Radio2;
         radios[3]=Radio3;
+        
         
  
         Pregunta.setText(preguntas.get(numero).getTitulo());
