@@ -23,7 +23,7 @@ public class TestBasico extends javax.swing.JFrame {
 JRadioButton radios[]=new JRadioButton[4];
 int numero=0;
 
-int x=10;
+int x=20;
     /**
      * Creates new form TestBasico
      */
@@ -43,7 +43,7 @@ int x=10;
                      x--;
                      if(x<=0){
                          numero++;
-                         x=20;
+                         x=90;
                      }
                     
                     
@@ -55,7 +55,7 @@ int x=10;
                              etiquetaReloj2.setForeground(Color.red);
                          }
                else{
-                             
+                             etiquetaReloj2.setForeground(Color.black);
                          }
                      }catch(InterruptedException e){
                          Logger.getLogger(TestBasico.class.getName()).log(Level.SEVERE,null,e);
@@ -211,7 +211,9 @@ int x=10;
     
     private void botonEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEvaluacionActionPerformed
         // TODO add your handling code here:
-        
+         
+        //float respuesta=GeneradorPreguntas.calificacion(preguntas.get(numero),radios);
+        //botonEvaluacion.setText("Tu resultado es: "+respuesta);
         JOptionPane.showMessageDialog(rootPane, "Tu resultado: "+GeneradorPreguntas.aciertos);
     }//GEN-LAST:event_botonEvaluacionActionPerformed
 

@@ -166,7 +166,23 @@ public class GeneradorPreguntas {
         return respuesta;
     }
 
-    
+    public static float calificacion(Pregunta p, JRadioButton[]radios){
+     boolean respuesta=false;
+       float calificacion=0;
+         String seleccion="";
+         for(JRadioButton radio:radios){
+             if(radio.isSelected()){
+                 seleccion= radio.getText();
+             }
+         }
+         for(Opcion o:p.getOpciones()){
+             if(o.isEstatus()){
+                 if(o.getTitulo().equals(seleccion))respuesta=true;
+                 calificacion+=1;
+             }
+         }  
+         return calificacion;
+     }
     
  } 
     
