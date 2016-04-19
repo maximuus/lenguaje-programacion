@@ -168,7 +168,7 @@ public class GeneradorPreguntas {
 
     public static float calificacion(Pregunta p, JRadioButton[]radios){
      boolean respuesta=false;
-       float calificacion=0;
+         float calificacion=0;
          String seleccion="";
          for(JRadioButton radio:radios){
              if(radio.isSelected()){

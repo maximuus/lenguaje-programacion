@@ -22,8 +22,7 @@ public class TestBasico extends javax.swing.JFrame {
     float aciertos;
 JRadioButton radios[]=new JRadioButton[4];
 int numero=0;
-
-int x=20;
+int x=90;
     /**
      * Creates new form TestBasico
      */
@@ -39,6 +38,7 @@ int x=20;
              public void run() {
                  while(true){
                      
+                     
                      inicarTodos();
                      x--;
                      if(x<=0){
@@ -51,12 +51,20 @@ int x=20;
                      try{
                          
                          Thread.sleep(1000);
+                         
                          if(x<=5){
                              etiquetaReloj2.setForeground(Color.red);
                          }
                else{
                              etiquetaReloj2.setForeground(Color.black);
                          }
+                         
+                         if(x<=30){
+                             etiquetaReloj2.setForeground(Color.blue);
+                         }
+               else{
+                         }
+                         
                      }catch(InterruptedException e){
                          Logger.getLogger(TestBasico.class.getName()).log(Level.SEVERE,null,e);
                          
@@ -94,21 +102,30 @@ int x=20;
         botonEvaluacion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        Pregunta.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         Pregunta.setText("Pregunta");
 
         buttonGroup1.add(Radio0);
+        Radio0.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         Radio0.setText("jRadioButton1");
 
         buttonGroup1.add(Radio1);
+        Radio1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         Radio1.setText("jRadioButton2");
 
         buttonGroup1.add(Radio2);
+        Radio2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         Radio2.setText("jRadioButton3");
 
         buttonGroup1.add(Radio3);
+        Radio3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         Radio3.setText("jRadioButton4");
 
+        R.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        R.setForeground(new java.awt.Color(51, 51, 255));
         R.setText("Checar respuesta");
         R.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +133,8 @@ int x=20;
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 255));
         jButton2.setText("Ir a siguiente pregunta");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +142,8 @@ int x=20;
             }
         });
 
+        botonEvaluacion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        botonEvaluacion.setForeground(new java.awt.Color(51, 51, 255));
         botonEvaluacion.setText("Evaluacion");
         botonEvaluacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,28 +159,30 @@ int x=20;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(Pregunta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE))
+                        .addComponent(Pregunta))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(R)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonEvaluacion)))
+                        .addComponent(botonEvaluacion)
+                        .addGap(12, 12, 12)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
-                        .addComponent(etiquetaReloj2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(19, 19, 19))))
+                        .addComponent(etiquetaReloj2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Radio3)
                     .addComponent(Radio2)
-                    .addComponent(Radio1)
                     .addComponent(Radio0))
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Radio1)
+                    .addComponent(Radio3))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,19 +196,19 @@ int x=20;
                         .addContainerGap()
                         .addComponent(etiquetaReloj2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(38, 38, 38)
-                .addComponent(Radio0)
-                .addGap(18, 18, 18)
-                .addComponent(Radio1)
-                .addGap(18, 18, 18)
-                .addComponent(Radio2)
-                .addGap(18, 18, 18)
-                .addComponent(Radio3)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Radio0)
+                    .addComponent(Radio1))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Radio2)
+                    .addComponent(Radio3))
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(R, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
                     .addComponent(botonEvaluacion))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -202,19 +225,26 @@ int x=20;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         numero++;
-         if(numero==10){
+       if(numero==10){
           botonEvaluacion.setVisible(true);
        
     }//GEN-LAST:event_jButton2ActionPerformed
-     inicarTodos();
+     
     }
     
     private void botonEvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEvaluacionActionPerformed
         // TODO add your handling code here:
-         
+        inicarTodos();
+              JOptionPane.showMessageDialog(rootPane, "Tu resultado: "+GeneradorPreguntas.aciertos);
+              
+              if(numero==preguntas.size()){
+            
+           System.exit(WIDTH); 
+        }
         //float respuesta=GeneradorPreguntas.calificacion(preguntas.get(numero),radios);
         //botonEvaluacion.setText("Tu resultado es: "+respuesta);
-        JOptionPane.showMessageDialog(rootPane, "Tu resultado: "+GeneradorPreguntas.aciertos);
+        
+   
     }//GEN-LAST:event_botonEvaluacionActionPerformed
 
     /**
@@ -290,6 +320,8 @@ int x=20;
         Radio3.setText(preguntas.get(numero).getOpciones().get(3).getTitulo());
           
     }
+        
+                
     }
 
 
